@@ -12,5 +12,15 @@ def brute_force(input_list):
                     input_list.remove(k)
     return final_sum
 
-answer = brute_force(puzzle_input)
+
+
+def set_op(input_list):
+    final_sum = 0
+    set_input = set(input_list)
+    for i in input_list:
+        for j in input_list:
+            if 2020 - i - j in set_input:
+                return i * j * (2020 - i - j)
+
+answer = set_op(puzzle_input)
 print(answer)
