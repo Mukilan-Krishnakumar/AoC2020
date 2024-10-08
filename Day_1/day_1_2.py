@@ -1,3 +1,5 @@
+import itertools
+
 puzzle_input = [int(line.rstrip()) for line in open("../puzzle_inputs/day_1_1.txt",  "r")]
 
 def brute_force(input_list):
@@ -22,5 +24,10 @@ def set_op(input_list):
             if 2020 - i - j in set_input:
                 return i * j * (2020 - i - j)
 
-answer = set_op(puzzle_input)
+def optimized_sol(input_list):
+    for a, b, c in itertools.combinations(input_list, 3):
+        if a + b + c == 2020:
+            return a * b * c
+
+answer = optimized_sol(puzzle_input)
 print(answer)
